@@ -21,7 +21,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes/:id" element={<Recipe />} />
-        <Route path="/admin" element={<Admin />} />
+        {import.meta.env.VITE_ADMIN_ENABLED === "true" && (
+          <Route path="/admin" element={<Admin />} />
+        )}
       </Routes>
     </>
   );
