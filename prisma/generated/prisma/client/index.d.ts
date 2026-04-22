@@ -30,24 +30,6 @@ export type Ingredient = $Result.DefaultSelection<Prisma.$IngredientPayload>
 export type Step = $Result.DefaultSelection<Prisma.$StepPayload>
 
 /**
- * Enums
- */
-export namespace $Enums {
-  export const Difficulty: {
-  EASY: 'EASY',
-  MEDIUM: 'MEDIUM',
-  HARD: 'HARD'
-};
-
-export type Difficulty = (typeof Difficulty)[keyof typeof Difficulty]
-
-}
-
-export type Difficulty = $Enums.Difficulty
-
-export const Difficulty: typeof $Enums.Difficulty
-
-/**
  * ##  Prisma Client ʲˢ
  * 
  * Type-safe database client for TypeScript & Node.js
@@ -1104,6 +1086,7 @@ export namespace Prisma {
     id: number | null
     title: string | null
     description: string | null
+    category: string | null
     sourceUrl: string | null
     subreddit: string | null
     upvotes: number | null
@@ -1111,7 +1094,6 @@ export namespace Prisma {
     servings: number | null
     prepTime: number | null
     cookTime: number | null
-    difficulty: $Enums.Difficulty | null
     createdAt: Date | null
   }
 
@@ -1119,6 +1101,7 @@ export namespace Prisma {
     id: number | null
     title: string | null
     description: string | null
+    category: string | null
     sourceUrl: string | null
     subreddit: string | null
     upvotes: number | null
@@ -1126,7 +1109,6 @@ export namespace Prisma {
     servings: number | null
     prepTime: number | null
     cookTime: number | null
-    difficulty: $Enums.Difficulty | null
     createdAt: Date | null
   }
 
@@ -1134,6 +1116,7 @@ export namespace Prisma {
     id: number
     title: number
     description: number
+    category: number
     sourceUrl: number
     subreddit: number
     upvotes: number
@@ -1141,7 +1124,6 @@ export namespace Prisma {
     servings: number
     prepTime: number
     cookTime: number
-    difficulty: number
     tags: number
     createdAt: number
     _all: number
@@ -1168,6 +1150,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    category?: true
     sourceUrl?: true
     subreddit?: true
     upvotes?: true
@@ -1175,7 +1158,6 @@ export namespace Prisma {
     servings?: true
     prepTime?: true
     cookTime?: true
-    difficulty?: true
     createdAt?: true
   }
 
@@ -1183,6 +1165,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    category?: true
     sourceUrl?: true
     subreddit?: true
     upvotes?: true
@@ -1190,7 +1173,6 @@ export namespace Prisma {
     servings?: true
     prepTime?: true
     cookTime?: true
-    difficulty?: true
     createdAt?: true
   }
 
@@ -1198,6 +1180,7 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
+    category?: true
     sourceUrl?: true
     subreddit?: true
     upvotes?: true
@@ -1205,7 +1188,6 @@ export namespace Prisma {
     servings?: true
     prepTime?: true
     cookTime?: true
-    difficulty?: true
     tags?: true
     createdAt?: true
     _all?: true
@@ -1301,14 +1283,14 @@ export namespace Prisma {
     id: number
     title: string
     description: string
-    sourceUrl: string
-    subreddit: string
+    category: string | null
+    sourceUrl: string | null
+    subreddit: string | null
     upvotes: number
     imageUrl: string | null
     servings: number | null
     prepTime: number | null
     cookTime: number | null
-    difficulty: $Enums.Difficulty
     tags: string[]
     createdAt: Date
     _count: RecipeCountAggregateOutputType | null
@@ -1336,6 +1318,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    category?: boolean
     sourceUrl?: boolean
     subreddit?: boolean
     upvotes?: boolean
@@ -1343,7 +1326,6 @@ export namespace Prisma {
     servings?: boolean
     prepTime?: boolean
     cookTime?: boolean
-    difficulty?: boolean
     tags?: boolean
     createdAt?: boolean
     ingredients?: boolean | Recipe$ingredientsArgs<ExtArgs>
@@ -1355,6 +1337,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    category?: boolean
     sourceUrl?: boolean
     subreddit?: boolean
     upvotes?: boolean
@@ -1362,7 +1345,6 @@ export namespace Prisma {
     servings?: boolean
     prepTime?: boolean
     cookTime?: boolean
-    difficulty?: boolean
     tags?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["recipe"]>
@@ -1371,6 +1353,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
+    category?: boolean
     sourceUrl?: boolean
     subreddit?: boolean
     upvotes?: boolean
@@ -1378,7 +1361,6 @@ export namespace Prisma {
     servings?: boolean
     prepTime?: boolean
     cookTime?: boolean
-    difficulty?: boolean
     tags?: boolean
     createdAt?: boolean
   }
@@ -1400,14 +1382,14 @@ export namespace Prisma {
       id: number
       title: string
       description: string
-      sourceUrl: string
-      subreddit: string
+      category: string | null
+      sourceUrl: string | null
+      subreddit: string | null
       upvotes: number
       imageUrl: string | null
       servings: number | null
       prepTime: number | null
       cookTime: number | null
-      difficulty: $Enums.Difficulty
       tags: string[]
       createdAt: Date
     }, ExtArgs["result"]["recipe"]>
@@ -1808,6 +1790,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Recipe", 'Int'>
     readonly title: FieldRef<"Recipe", 'String'>
     readonly description: FieldRef<"Recipe", 'String'>
+    readonly category: FieldRef<"Recipe", 'String'>
     readonly sourceUrl: FieldRef<"Recipe", 'String'>
     readonly subreddit: FieldRef<"Recipe", 'String'>
     readonly upvotes: FieldRef<"Recipe", 'Int'>
@@ -1815,7 +1798,6 @@ export namespace Prisma {
     readonly servings: FieldRef<"Recipe", 'Int'>
     readonly prepTime: FieldRef<"Recipe", 'Int'>
     readonly cookTime: FieldRef<"Recipe", 'Int'>
-    readonly difficulty: FieldRef<"Recipe", 'Difficulty'>
     readonly tags: FieldRef<"Recipe", 'String[]'>
     readonly createdAt: FieldRef<"Recipe", 'DateTime'>
   }
@@ -4138,6 +4120,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     description: 'description',
+    category: 'category',
     sourceUrl: 'sourceUrl',
     subreddit: 'subreddit',
     upvotes: 'upvotes',
@@ -4145,7 +4128,6 @@ export namespace Prisma {
     servings: 'servings',
     prepTime: 'prepTime',
     cookTime: 'cookTime',
-    difficulty: 'difficulty',
     tags: 'tags',
     createdAt: 'createdAt'
   };
@@ -4232,20 +4214,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Difficulty'
-   */
-  export type EnumDifficultyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Difficulty'>
-    
-
-
-  /**
-   * Reference to a field of type 'Difficulty[]'
-   */
-  export type ListEnumDifficultyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Difficulty[]'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -4283,14 +4251,14 @@ export namespace Prisma {
     id?: IntFilter<"Recipe"> | number
     title?: StringFilter<"Recipe"> | string
     description?: StringFilter<"Recipe"> | string
-    sourceUrl?: StringFilter<"Recipe"> | string
-    subreddit?: StringFilter<"Recipe"> | string
+    category?: StringNullableFilter<"Recipe"> | string | null
+    sourceUrl?: StringNullableFilter<"Recipe"> | string | null
+    subreddit?: StringNullableFilter<"Recipe"> | string | null
     upvotes?: IntFilter<"Recipe"> | number
     imageUrl?: StringNullableFilter<"Recipe"> | string | null
     servings?: IntNullableFilter<"Recipe"> | number | null
     prepTime?: IntNullableFilter<"Recipe"> | number | null
     cookTime?: IntNullableFilter<"Recipe"> | number | null
-    difficulty?: EnumDifficultyFilter<"Recipe"> | $Enums.Difficulty
     tags?: StringNullableListFilter<"Recipe">
     createdAt?: DateTimeFilter<"Recipe"> | Date | string
     ingredients?: IngredientListRelationFilter
@@ -4301,14 +4269,14 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    sourceUrl?: SortOrder
-    subreddit?: SortOrder
+    category?: SortOrderInput | SortOrder
+    sourceUrl?: SortOrderInput | SortOrder
+    subreddit?: SortOrderInput | SortOrder
     upvotes?: SortOrder
     imageUrl?: SortOrderInput | SortOrder
     servings?: SortOrderInput | SortOrder
     prepTime?: SortOrderInput | SortOrder
     cookTime?: SortOrderInput | SortOrder
-    difficulty?: SortOrder
     tags?: SortOrder
     createdAt?: SortOrder
     ingredients?: IngredientOrderByRelationAggregateInput
@@ -4322,14 +4290,14 @@ export namespace Prisma {
     NOT?: RecipeWhereInput | RecipeWhereInput[]
     title?: StringFilter<"Recipe"> | string
     description?: StringFilter<"Recipe"> | string
-    sourceUrl?: StringFilter<"Recipe"> | string
-    subreddit?: StringFilter<"Recipe"> | string
+    category?: StringNullableFilter<"Recipe"> | string | null
+    sourceUrl?: StringNullableFilter<"Recipe"> | string | null
+    subreddit?: StringNullableFilter<"Recipe"> | string | null
     upvotes?: IntFilter<"Recipe"> | number
     imageUrl?: StringNullableFilter<"Recipe"> | string | null
     servings?: IntNullableFilter<"Recipe"> | number | null
     prepTime?: IntNullableFilter<"Recipe"> | number | null
     cookTime?: IntNullableFilter<"Recipe"> | number | null
-    difficulty?: EnumDifficultyFilter<"Recipe"> | $Enums.Difficulty
     tags?: StringNullableListFilter<"Recipe">
     createdAt?: DateTimeFilter<"Recipe"> | Date | string
     ingredients?: IngredientListRelationFilter
@@ -4340,14 +4308,14 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    sourceUrl?: SortOrder
-    subreddit?: SortOrder
+    category?: SortOrderInput | SortOrder
+    sourceUrl?: SortOrderInput | SortOrder
+    subreddit?: SortOrderInput | SortOrder
     upvotes?: SortOrder
     imageUrl?: SortOrderInput | SortOrder
     servings?: SortOrderInput | SortOrder
     prepTime?: SortOrderInput | SortOrder
     cookTime?: SortOrderInput | SortOrder
-    difficulty?: SortOrder
     tags?: SortOrder
     createdAt?: SortOrder
     _count?: RecipeCountOrderByAggregateInput
@@ -4364,14 +4332,14 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Recipe"> | number
     title?: StringWithAggregatesFilter<"Recipe"> | string
     description?: StringWithAggregatesFilter<"Recipe"> | string
-    sourceUrl?: StringWithAggregatesFilter<"Recipe"> | string
-    subreddit?: StringWithAggregatesFilter<"Recipe"> | string
+    category?: StringNullableWithAggregatesFilter<"Recipe"> | string | null
+    sourceUrl?: StringNullableWithAggregatesFilter<"Recipe"> | string | null
+    subreddit?: StringNullableWithAggregatesFilter<"Recipe"> | string | null
     upvotes?: IntWithAggregatesFilter<"Recipe"> | number
     imageUrl?: StringNullableWithAggregatesFilter<"Recipe"> | string | null
     servings?: IntNullableWithAggregatesFilter<"Recipe"> | number | null
     prepTime?: IntNullableWithAggregatesFilter<"Recipe"> | number | null
     cookTime?: IntNullableWithAggregatesFilter<"Recipe"> | number | null
-    difficulty?: EnumDifficultyWithAggregatesFilter<"Recipe"> | $Enums.Difficulty
     tags?: StringNullableListFilter<"Recipe">
     createdAt?: DateTimeWithAggregatesFilter<"Recipe"> | Date | string
   }
@@ -4488,14 +4456,14 @@ export namespace Prisma {
   export type RecipeCreateInput = {
     title: string
     description: string
-    sourceUrl: string
-    subreddit: string
+    category?: string | null
+    sourceUrl?: string | null
+    subreddit?: string | null
     upvotes?: number
     imageUrl?: string | null
     servings?: number | null
     prepTime?: number | null
     cookTime?: number | null
-    difficulty?: $Enums.Difficulty
     tags?: RecipeCreatetagsInput | string[]
     createdAt?: Date | string
     ingredients?: IngredientCreateNestedManyWithoutRecipeInput
@@ -4506,14 +4474,14 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    sourceUrl: string
-    subreddit: string
+    category?: string | null
+    sourceUrl?: string | null
+    subreddit?: string | null
     upvotes?: number
     imageUrl?: string | null
     servings?: number | null
     prepTime?: number | null
     cookTime?: number | null
-    difficulty?: $Enums.Difficulty
     tags?: RecipeCreatetagsInput | string[]
     createdAt?: Date | string
     ingredients?: IngredientUncheckedCreateNestedManyWithoutRecipeInput
@@ -4523,14 +4491,14 @@ export namespace Prisma {
   export type RecipeUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sourceUrl?: StringFieldUpdateOperationsInput | string
-    subreddit?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: NullableStringFieldUpdateOperationsInput | string | null
     upvotes?: IntFieldUpdateOperationsInput | number
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     servings?: NullableIntFieldUpdateOperationsInput | number | null
     prepTime?: NullableIntFieldUpdateOperationsInput | number | null
     cookTime?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: RecipeUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ingredients?: IngredientUpdateManyWithoutRecipeNestedInput
@@ -4541,14 +4509,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sourceUrl?: StringFieldUpdateOperationsInput | string
-    subreddit?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: NullableStringFieldUpdateOperationsInput | string | null
     upvotes?: IntFieldUpdateOperationsInput | number
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     servings?: NullableIntFieldUpdateOperationsInput | number | null
     prepTime?: NullableIntFieldUpdateOperationsInput | number | null
     cookTime?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: RecipeUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ingredients?: IngredientUncheckedUpdateManyWithoutRecipeNestedInput
@@ -4559,14 +4527,14 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    sourceUrl: string
-    subreddit: string
+    category?: string | null
+    sourceUrl?: string | null
+    subreddit?: string | null
     upvotes?: number
     imageUrl?: string | null
     servings?: number | null
     prepTime?: number | null
     cookTime?: number | null
-    difficulty?: $Enums.Difficulty
     tags?: RecipeCreatetagsInput | string[]
     createdAt?: Date | string
   }
@@ -4574,14 +4542,14 @@ export namespace Prisma {
   export type RecipeUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sourceUrl?: StringFieldUpdateOperationsInput | string
-    subreddit?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: NullableStringFieldUpdateOperationsInput | string | null
     upvotes?: IntFieldUpdateOperationsInput | number
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     servings?: NullableIntFieldUpdateOperationsInput | number | null
     prepTime?: NullableIntFieldUpdateOperationsInput | number | null
     cookTime?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: RecipeUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4590,14 +4558,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sourceUrl?: StringFieldUpdateOperationsInput | string
-    subreddit?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: NullableStringFieldUpdateOperationsInput | string | null
     upvotes?: IntFieldUpdateOperationsInput | number
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     servings?: NullableIntFieldUpdateOperationsInput | number | null
     prepTime?: NullableIntFieldUpdateOperationsInput | number | null
     cookTime?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: RecipeUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4751,13 +4719,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type EnumDifficultyFilter<$PrismaModel = never> = {
-    equals?: $Enums.Difficulty | EnumDifficultyFieldRefInput<$PrismaModel>
-    in?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    not?: NestedEnumDifficultyFilter<$PrismaModel> | $Enums.Difficulty
-  }
-
   export type StringNullableListFilter<$PrismaModel = never> = {
     equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     has?: string | StringFieldRefInput<$PrismaModel> | null
@@ -4806,6 +4767,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    category?: SortOrder
     sourceUrl?: SortOrder
     subreddit?: SortOrder
     upvotes?: SortOrder
@@ -4813,7 +4775,6 @@ export namespace Prisma {
     servings?: SortOrder
     prepTime?: SortOrder
     cookTime?: SortOrder
-    difficulty?: SortOrder
     tags?: SortOrder
     createdAt?: SortOrder
   }
@@ -4830,6 +4791,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    category?: SortOrder
     sourceUrl?: SortOrder
     subreddit?: SortOrder
     upvotes?: SortOrder
@@ -4837,7 +4799,6 @@ export namespace Prisma {
     servings?: SortOrder
     prepTime?: SortOrder
     cookTime?: SortOrder
-    difficulty?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4845,6 +4806,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
+    category?: SortOrder
     sourceUrl?: SortOrder
     subreddit?: SortOrder
     upvotes?: SortOrder
@@ -4852,7 +4814,6 @@ export namespace Prisma {
     servings?: SortOrder
     prepTime?: SortOrder
     cookTime?: SortOrder
-    difficulty?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -4930,16 +4891,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type EnumDifficultyWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Difficulty | EnumDifficultyFieldRefInput<$PrismaModel>
-    in?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    not?: NestedEnumDifficultyWithAggregatesFilter<$PrismaModel> | $Enums.Difficulty
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumDifficultyFilter<$PrismaModel>
-    _max?: NestedEnumDifficultyFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -5064,6 +5015,10 @@ export namespace Prisma {
     set?: string
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -5072,20 +5027,12 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type EnumDifficultyFieldUpdateOperationsInput = {
-    set?: $Enums.Difficulty
   }
 
   export type RecipeUpdatetagsInput = {
@@ -5231,13 +5178,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedEnumDifficultyFilter<$PrismaModel = never> = {
-    equals?: $Enums.Difficulty | EnumDifficultyFieldRefInput<$PrismaModel>
-    in?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    not?: NestedEnumDifficultyFilter<$PrismaModel> | $Enums.Difficulty
-  }
-
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5335,16 +5275,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedEnumDifficultyWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Difficulty | EnumDifficultyFieldRefInput<$PrismaModel>
-    in?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Difficulty[] | ListEnumDifficultyFieldRefInput<$PrismaModel>
-    not?: NestedEnumDifficultyWithAggregatesFilter<$PrismaModel> | $Enums.Difficulty
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumDifficultyFilter<$PrismaModel>
-    _max?: NestedEnumDifficultyFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -5461,14 +5391,14 @@ export namespace Prisma {
   export type RecipeCreateWithoutIngredientsInput = {
     title: string
     description: string
-    sourceUrl: string
-    subreddit: string
+    category?: string | null
+    sourceUrl?: string | null
+    subreddit?: string | null
     upvotes?: number
     imageUrl?: string | null
     servings?: number | null
     prepTime?: number | null
     cookTime?: number | null
-    difficulty?: $Enums.Difficulty
     tags?: RecipeCreatetagsInput | string[]
     createdAt?: Date | string
     steps?: StepCreateNestedManyWithoutRecipeInput
@@ -5478,14 +5408,14 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    sourceUrl: string
-    subreddit: string
+    category?: string | null
+    sourceUrl?: string | null
+    subreddit?: string | null
     upvotes?: number
     imageUrl?: string | null
     servings?: number | null
     prepTime?: number | null
     cookTime?: number | null
-    difficulty?: $Enums.Difficulty
     tags?: RecipeCreatetagsInput | string[]
     createdAt?: Date | string
     steps?: StepUncheckedCreateNestedManyWithoutRecipeInput
@@ -5510,14 +5440,14 @@ export namespace Prisma {
   export type RecipeUpdateWithoutIngredientsInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sourceUrl?: StringFieldUpdateOperationsInput | string
-    subreddit?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: NullableStringFieldUpdateOperationsInput | string | null
     upvotes?: IntFieldUpdateOperationsInput | number
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     servings?: NullableIntFieldUpdateOperationsInput | number | null
     prepTime?: NullableIntFieldUpdateOperationsInput | number | null
     cookTime?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: RecipeUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     steps?: StepUpdateManyWithoutRecipeNestedInput
@@ -5527,14 +5457,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sourceUrl?: StringFieldUpdateOperationsInput | string
-    subreddit?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: NullableStringFieldUpdateOperationsInput | string | null
     upvotes?: IntFieldUpdateOperationsInput | number
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     servings?: NullableIntFieldUpdateOperationsInput | number | null
     prepTime?: NullableIntFieldUpdateOperationsInput | number | null
     cookTime?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: RecipeUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     steps?: StepUncheckedUpdateManyWithoutRecipeNestedInput
@@ -5543,14 +5473,14 @@ export namespace Prisma {
   export type RecipeCreateWithoutStepsInput = {
     title: string
     description: string
-    sourceUrl: string
-    subreddit: string
+    category?: string | null
+    sourceUrl?: string | null
+    subreddit?: string | null
     upvotes?: number
     imageUrl?: string | null
     servings?: number | null
     prepTime?: number | null
     cookTime?: number | null
-    difficulty?: $Enums.Difficulty
     tags?: RecipeCreatetagsInput | string[]
     createdAt?: Date | string
     ingredients?: IngredientCreateNestedManyWithoutRecipeInput
@@ -5560,14 +5490,14 @@ export namespace Prisma {
     id?: number
     title: string
     description: string
-    sourceUrl: string
-    subreddit: string
+    category?: string | null
+    sourceUrl?: string | null
+    subreddit?: string | null
     upvotes?: number
     imageUrl?: string | null
     servings?: number | null
     prepTime?: number | null
     cookTime?: number | null
-    difficulty?: $Enums.Difficulty
     tags?: RecipeCreatetagsInput | string[]
     createdAt?: Date | string
     ingredients?: IngredientUncheckedCreateNestedManyWithoutRecipeInput
@@ -5592,14 +5522,14 @@ export namespace Prisma {
   export type RecipeUpdateWithoutStepsInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sourceUrl?: StringFieldUpdateOperationsInput | string
-    subreddit?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: NullableStringFieldUpdateOperationsInput | string | null
     upvotes?: IntFieldUpdateOperationsInput | number
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     servings?: NullableIntFieldUpdateOperationsInput | number | null
     prepTime?: NullableIntFieldUpdateOperationsInput | number | null
     cookTime?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: RecipeUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ingredients?: IngredientUpdateManyWithoutRecipeNestedInput
@@ -5609,14 +5539,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    sourceUrl?: StringFieldUpdateOperationsInput | string
-    subreddit?: StringFieldUpdateOperationsInput | string
+    category?: NullableStringFieldUpdateOperationsInput | string | null
+    sourceUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: NullableStringFieldUpdateOperationsInput | string | null
     upvotes?: IntFieldUpdateOperationsInput | number
     imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     servings?: NullableIntFieldUpdateOperationsInput | number | null
     prepTime?: NullableIntFieldUpdateOperationsInput | number | null
     cookTime?: NullableIntFieldUpdateOperationsInput | number | null
-    difficulty?: EnumDifficultyFieldUpdateOperationsInput | $Enums.Difficulty
     tags?: RecipeUpdatetagsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     ingredients?: IngredientUncheckedUpdateManyWithoutRecipeNestedInput

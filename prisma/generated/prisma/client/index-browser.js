@@ -126,6 +126,7 @@ exports.Prisma.RecipeScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
+  category: 'category',
   sourceUrl: 'sourceUrl',
   subreddit: 'subreddit',
   upvotes: 'upvotes',
@@ -133,7 +134,6 @@ exports.Prisma.RecipeScalarFieldEnum = {
   servings: 'servings',
   prepTime: 'prepTime',
   cookTime: 'cookTime',
-  difficulty: 'difficulty',
   tags: 'tags',
   createdAt: 'createdAt'
 };
@@ -167,11 +167,7 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.Difficulty = exports.$Enums.Difficulty = {
-  EASY: 'EASY',
-  MEDIUM: 'MEDIUM',
-  HARD: 'HARD'
-};
+
 
 exports.Prisma.ModelName = {
   Recipe: 'Recipe',

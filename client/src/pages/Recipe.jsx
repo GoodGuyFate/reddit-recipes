@@ -61,11 +61,12 @@ export default function Recipe() {
       {/* ── HEADER ── */}
       <div className={styles.header}>
         <div className={styles.headerInner}>
+        
           <div className={styles.headerLeft}>
             <Link to="/" className={styles.back}>← All Recipes</Link>
 
             <div className={styles.eyebrow}>
-              <span className={styles.subreddit}>r/{recipe.subreddit}</span>
+              {/* <span className={styles.subreddit}>r/{recipe.subreddit}</span> */}
               <span className={styles.upvotes}>▲ {recipe.upvotes.toLocaleString()} upvotes</span>
             </div>
 

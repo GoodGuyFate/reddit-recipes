@@ -152,15 +152,9 @@
   border-color: var(--accent);
 }
 
-/* ── STATS CARD ── */
-.statsCard {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 8px 0;
-  min-width: 180px;
-}
 
+
+/* ── STATS CARD ── */
 .stat {
   display: flex;
   align-items: center;
@@ -203,7 +197,7 @@
 
 .heroImage img {
   width: 100%;
-  max-height: 500px; 
+  /* max-height: 700px;  */
   object-fit: contain; 
   background: var(--surface); 
   border-radius: 24px; 

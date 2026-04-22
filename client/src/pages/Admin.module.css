@@ -364,20 +364,40 @@
 .confirmDeleteBtn:hover { opacity: 0.85; }
 .confirmDeleteBtn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-.cancelBtn {
+.editBtn {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.82rem;
   font-weight: 500;
-  color: var(--text-muted);
-  background: none;
-  border: 1px solid var(--border);
+  color: var(--accent);
+  background: var(--accent-light);
+  border: none;
   padding: 7px 14px;
   border-radius: 8px;
   cursor: pointer;
-  transition: color 0.2s, border-color 0.2s;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.editBtn:hover {
+  opacity: 0.85;
+}
+
+.editBtn:active {
+  transform: scale(0.96);
+}
+
+.cancelBtn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .cancelBtn:hover {
-  color: var(--text);
-  border-color: var(--text-muted);
+  background: var(--border);
 }

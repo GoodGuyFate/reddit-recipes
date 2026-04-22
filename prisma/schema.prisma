@@ -12,14 +12,14 @@ model Recipe {
   id          Int          @id @default(autoincrement())
   title       String
   description String
-  sourceUrl   String
-  subreddit   String
+  category    String?
+  sourceUrl   String?
+  subreddit   String?
   upvotes     Int          @default(0)
   imageUrl    String?
   servings    Int?
   prepTime    Int?
   cookTime    Int?
-  difficulty  Difficulty   @default(EASY)
   tags        String[]
   createdAt   DateTime     @default(now())
   ingredients Ingredient[]

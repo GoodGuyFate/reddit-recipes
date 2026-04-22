@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import styles from './Navbar.module.css'
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 export default function Navbar({ darkMode, setDarkMode }) {
   return (
@@ -8,10 +8,16 @@ export default function Navbar({ darkMode, setDarkMode }) {
         reddit<span>recipes</span>
       </Link>
       <div className={styles.right}>
-        <Link to="/" className={styles.navLink}>Browse</Link>
-        <Link to="/submit" className={styles.navLink}>Submit a Recipe</Link>
+        <Link to="/" className={styles.navLink}>
+          Browse
+        </Link>
+        <Link to="/submit" className={styles.navLink}>
+          Submit a Recipe
+        </Link>
         <div className={styles.toggleWrap}>
-          <span className={styles.toggleLabel}>{darkMode ? 'Dark' : 'Light'}</span>
+          <span className={styles.toggleLabel}>
+            {darkMode ? "Dark" : "Light"}
+          </span>
           <button
             className={styles.toggle}
             onClick={() => setDarkMode(!darkMode)}
@@ -20,5 +26,5 @@ export default function Navbar({ darkMode, setDarkMode }) {
         </div>
       </div>
     </nav>
-  )
+  );
 }
