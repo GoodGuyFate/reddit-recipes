@@ -1,0 +1,21 @@
+{
+  "name": "reddit-recipes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "postinstall": "prisma generate",
+    "dev": "vercel dev",
+    "build": "vercel build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "dotenv": "^17.4.2",
+    "pg": "^8.20.0",
+    "prisma": "^5.22.0"
+  }
+}
