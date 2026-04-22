@@ -1,45 +1,46 @@
 import { prisma } from '../lib/prisma.js'
 
-export default async function handler(req) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return Response.json({ error: 'Method not allowed' }, { status: 405 })
+    return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const body = await req.json()
+  const body = req.body
 
   const { title, description, sourceUrl, subreddit, upvotes, imageUrl,
           servings, prepTime, cookTime, difficulty, tags,
           ingredients, steps } = body
 
   if (!title || !description || !sourceUrl || !subreddit) {
-    return Response.json({ error: 'Missing required fields' }, { status: 400 })
+    return res.status(400).json({ error: 'Missing required fields' })
   }
 
-  const recipe = await prisma.recipe.create({
-    data: {
-      title,
-      description,
-      sourceUrl,
-      subreddit,
-      upvotes: upvotes ?? 0,
-      imageUrl,
-      servings,
-      prepTime,
-      cookTime,
-      difficulty: difficulty ?? 'EASY',
-      tags: tags ?? [],
-      ingredients: {
-        create: ingredients
+  try {
+    const recipe = await prisma.recipe.create({
+      data: {
+        title,
+        description,
+        sourceUrl,
+        subreddit,
+        upvotes: upvotes ?? 0,
+        imageUrl,
+        servings,
+        prepTime,
+        cookTime,
+        difficulty: difficulty ?? 'EASY',
+        tags: tags ?? [],
+        ingredients: { create: ingredients },
+        steps: { create: steps }
       },
-      steps: {
-        create: steps
+      include: {
+        ingredients: true,
+        steps: true
       }
-    },
-    include: {
-      ingredients: true,
-      steps: true
-    }
-  })
+    })
 
-  return Response.json(recipe, { status: 201 })
+    return res.status(201).json(recipe)
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ error: err.message })
+  }
 }

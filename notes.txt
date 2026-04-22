@@ -1,0 +1,9 @@
+-add edit recipe to admin panel
+-add a different way to handle images, not just links, but idk 
+-remove mandatory reddit links if recipe happens to not be from a reddit post (could be from a reddit comment, or simply some other source)
+-fix dark mode persistence 
+-have two fixed units metric/volume and be able to switch 
+-add an (optional) tag or something to ingredients
+-fix image on the recipe page
+-fix deleting recipes not deleting IDs, so even if i delete a recipe and add another, its not id 2, although idk if thats intentional or not
+-I think remove the difficulty, people can judge for themselves

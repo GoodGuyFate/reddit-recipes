@@ -1,30 +1,43 @@
 import { prisma } from '../lib/prisma.js'
 
-export default async function handler(req) {
-  const url = new URL(req.url)
-  const id = parseInt(url.pathname.split('/').pop())
+export default async function handler(req, res) {
+  const id = parseInt(req.query.id)
 
   if (isNaN(id)) {
-    return Response.json({ error: 'Invalid ID' }, { status: 400 })
+    return res.status(400).json({ error: 'Invalid ID' })
   }
 
   if (req.method === 'GET') {
-    const recipe = await prisma.recipe.findUnique({
-      where: { id },
-      include: {
-        ingredients: true,
-        steps: {
-          orderBy: { order: 'asc' }
+    try {
+      const recipe = await prisma.recipe.findUnique({
+        where: { id },
+        include: {
+          ingredients: true,
+          steps: { orderBy: { order: 'asc' } }
         }
-      }
-    })
+      })
 
-    if (!recipe) {
-      return Response.json({ error: 'Recipe not found' }, { status: 404 })
+      if (!recipe) return res.status(404).json({ error: 'Recipe not found' })
+
+      return res.status(200).json(recipe)
+    } catch (err) {
+      return res.status(500).json({ error: err.message })
     }
-
-    return Response.json(recipe)
   }
 
-  return Response.json({ error: 'Method not allowed' }, { status: 405 })
+  if (req.method === 'DELETE') {
+    try {
+      // Delete related records first (Prisma won't cascade automatically unless set in schema)
+      await prisma.ingredient.deleteMany({ where: { recipeId: id } })
+      await prisma.step.deleteMany({ where: { recipeId: id } })
+      await prisma.recipe.delete({ where: { id } })
+
+      return res.status(200).json({ success: true })
+    } catch (err) {
+      console.error(err)
+      return res.status(500).json({ error: err.message })
+    }
+  }
+
+  return res.status(405).json({ error: 'Method not allowed' })
 }

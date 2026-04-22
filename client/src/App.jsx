@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar.jsx'
-import Home from './pages/Home.jsx'
-import Recipe from './pages/Recipe.jsx'
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar.jsx";
+import Home from "./pages/Home.jsx";
+import Recipe from "./pages/Recipe.jsx";
+import Admin from "./pages/Admin.jsx";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : '')
-  }, [darkMode])
+    document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "");
+  }, [darkMode]);
 
   return (
     <>
@@ -17,9 +18,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes/:id" element={<Recipe />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
