@@ -82,7 +82,7 @@ export default function Home() {
           <input
             className={styles.searchInput}
             type="text"
-            placeholder="Search recipes, ingredients, subreddits..."
+            placeholder="Search recipes..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />

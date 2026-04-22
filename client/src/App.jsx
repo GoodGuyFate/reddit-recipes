@@ -6,10 +6,13 @@ import Recipe from "./pages/Recipe.jsx";
 import Admin from "./pages/Admin.jsx";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    () => localStorage.getItem("theme") === "dark",
+  );
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", darkMode ? "dark" : "");
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
   return (
